@@ -13,11 +13,11 @@ const createCells = function(){
     let cellDivNode = document.createElement('div')
     cellDivNode.innerText = cellNumber
     cellDivNode.classList.add("cell")
-    cellDivNode.onclick = selectCell
     cellContainerNode.appendChild(cellDivNode)
-}
-}
+    cellDivNode.onclick = selectCell  // adding event listener
 
+}
+}
 
 
 
@@ -35,12 +35,33 @@ const selectCell = function(event) {
     }
 
 
+    function randomClick(){
 
+    let cellsContainer = document.getElementsByClassName('cell')
+    console.log(cellsContainer)
 
     function random() {
-       randomnNumber = Math.floor(Math.random() * 76);
-       console.log(randomnNumber)
+       Math.floor(Math.random() * 76) + 1;
     }
+    let rand = random()
+
+    for (let i = 0; i < cellsContainer.length; i++){
+    if (rand === parseInt(cellsContainer[i].innerText)){
+
+        cellsContainer[i].classList.add('selected')
+
+    }
+    
+        
+}
+    
+}
+    
+
+    
+    
+
+
 
 
     
