@@ -12,9 +12,11 @@ const createCells = function(){
 
     let cellDivNode = document.createElement('div')
     cellDivNode.innerText = cellNumber
+    cellDivNode.onclick = selectCell 
     cellDivNode.classList.add("cell")
     cellContainerNode.appendChild(cellDivNode)
-    cellDivNode.onclick = selectCell  // adding event listener
+    
+    
 
 }
 }
@@ -31,24 +33,49 @@ const selectCell = function(event) {
 
         clickedCellNode.classList.add('selected')
 
+        
+        displayselectednumber()
+
   
     }
 
+function displayselectednumber() {
+    let selectedNode = document.querySelector(".selected")
+    let selectedNumber = parseInt(selectedNode.innerText)
+    
+    
+    
+
+    let pickedDivNode = document.getElementById("picked")
+    
+    
+    for (let i = 0; i < 1; i++) {
+        let pickedNumber = document.createElement('p')
+        pickedNumber.innerText = selectedNumber
+        pickedDivNode.appendChild(pickedNumber)
+        
+        
+    }
+    
+
+}
 
     function randomClick(){
 
-    let cellsContainer = document.getElementsByClassName('cell')
-    console.log(cellsContainer)
+    let cellsContainer = document.querySelectorAll('.cell')
+    
 
     function random() {
-       Math.floor(Math.random() * 76) + 1;
+        return Math.floor(Math.random() * 76) + 1;
     }
-    let rand = random()
+    
 
     for (let i = 0; i < cellsContainer.length; i++){
-    if (rand === parseInt(cellsContainer[i].innerText)){
+    if (random() === parseInt(cellsContainer[i].innerText)){
 
-        cellsContainer[i].classList.add('selected')
+        (cellsContainer[i].classList.add('selected'))
+
+        displayselectednumber()
 
     }
     
